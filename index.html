@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0F1E3D">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="format-detection" content="telephone=no">
+<title>Ocho semanas de verano — para Lucía</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sky-deep:#0F1E3D;
+    --sky-mid:#2C4C82;
+    --sky-soft:#5C7FB0;
+    --sun-core:#FFC857;
+    --sun-glow:#FF8C42;
+    --sand:#FBEBD0;
+    --sand-deep:#F0D9AE;
+    --ink:#152238;
+    --ink-soft:#4A5670;
+    --paper:#FFFBF2;
+    --line: rgba(21,34,56,0.12);
+    --shadow: 0 20px 40px -20px rgba(15,30,61,0.35);
+  }
+
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; text-size-adjust:100%; }
+  html, body{ overflow-x:hidden; max-width:100%; }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Manrope', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:linear-gradient(180deg, var(--sky-deep) 0%, var(--sky-mid) 55%, var(--sky-soft) 100%);
+    color:var(--sand);
+    padding:calc(5.5rem + env(safe-area-inset-top)) 1.5rem 3.5rem;
+    overflow:hidden;
+  }
+  @media (max-width:600px){
+    .hero{ padding:calc(3rem + env(safe-area-inset-top)) 1.25rem 2.6rem; }
+  }
+  .hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(1.5px 1.5px at 12% 20%, rgba(255,255,255,0.55), transparent),
+      radial-gradient(1.5px 1.5px at 28% 12%, rgba(255,255,255,0.4), transparent),
+      radial-gradient(1px 1px at 44% 28%, rgba(255,255,255,0.5), transparent),
+      radial-gradient(1.5px 1.5px at 63% 8%, rgba(255,255,255,0.35), transparent),
+      radial-gradient(1px 1px at 78% 18%, rgba(255,255,255,0.45), transparent),
+      radial-gradient(1.5px 1.5px at 92% 24%, rgba(255,255,255,0.4), transparent);
+    opacity:0.8;
+    pointer-events:none;
+  }
+  .eyebrow{
+    position:relative;
+    display:inline-block;
+    font-size:0.8rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--sun-core);
+    font-weight:700;
+    margin-bottom:1rem;
+  }
+  .hero h1{
+    position:relative;
+    font-size:clamp(2.1rem, 5vw, 3.4rem);
+    line-height:1.08;
+    margin:0 0 0.9rem;
+    max-width:14ch;
+  }
+  .hero p.lede{
+    position:relative;
+    font-size:1.05rem;
+    line-height:1.6;
+    max-width:38ch;
+    color:rgba(251,235,208,0.85);
+    margin:0 0 2.6rem;
+  }
+
+  .arc-wrap{
+    position:relative;
+    max-width:900px;
+    margin:0 auto;
+  }
+  .arc-wrap svg{ width:100%; height:auto; display:block; overflow:visible; }
+  .arc-path{ fill:none; stroke:rgba(251,235,208,0.28); stroke-width:2; stroke-dasharray:1 9; stroke-linecap:round; }
+  .arc-marker circle{ fill:var(--sky-deep); stroke:rgba(251,235,208,0.5); stroke-width:1.5; }
+  .arc-marker.passed circle{ fill:var(--sun-core); stroke:var(--sun-core); }
+  .arc-marker text{ fill:rgba(251,235,208,0.65); font-family:'Manrope',sans-serif; font-size:11px; font-weight:700; }
+  .arc-marker.passed text{ fill:var(--sun-core); }
+  .sun{ filter: drop-shadow(0 0 14px rgba(255,200,87,0.85)); }
+  .sun circle.core{ fill:url(#sunGradient); }
+
+  @media (max-width:600px){
+    .arc-marker circle{ r:11; }
+    .arc-marker text{ font-size:26px; }
+    .sun circle.core{ r:30; }
+  }
+
+  @media (prefers-reduced-motion:no-preference){
+    .sun{ animation: sunPulse 3.5s ease-in-out infinite; }
+  }
+  @keyframes sunPulse{
+    0%,100%{ filter: drop-shadow(0 0 10px rgba(255,200,87,0.7)); }
+    50%{ filter: drop-shadow(0 0 20px rgba(255,140,66,0.9)); }
+  }
+
+  .range-caption{
+    text-align:center;
+    margin-top:1rem;
+    font-size:0.85rem;
+    color:rgba(251,235,208,0.6);
+    letter-spacing:0.02em;
+  }
+
+  /* ---------- GRID SECTION ---------- */
+  main{
+    max-width:1080px;
+    margin:0 auto;
+    padding:3.5rem 1.5rem 5rem;
+  }
+  .section-head{
+    text-align:center;
+    margin-bottom:2.6rem;
+  }
+  .section-head h2{
+    font-size:clamp(1.5rem,3vw,2rem);
+    margin:0 0 0.5rem;
+    color:var(--ink);
+  }
+  .section-head p{
+    color:var(--ink-soft);
+    margin:0;
+    font-size:0.98rem;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:1.1rem;
+  }
+  @media (max-width:860px){ .grid{ grid-template-columns:repeat(2, 1fr); } }
+  @media (max-width:460px){ .grid{ grid-template-columns:1fr; } }
+
+  .card{
+    position:relative;
+    border-radius:18px;
+    padding:1.5rem 1.3rem;
+    text-align:left;
+    cursor:pointer;
+    border:1px solid var(--line);
+    background:var(--sand);
+    transition:transform 0.35s ease, box-shadow 0.35s ease;
+    font-family:inherit;
+    color:inherit;
+    display:flex;
+    flex-direction:column;
+    gap:0.9rem;
+    min-height:170px;
+    touch-action:manipulation;
+    -webkit-touch-callout:none;
+  }
+  @media (hover:hover){
+    .card:hover{ transform:translateY(-4px); box-shadow:var(--shadow); }
+    .card.locked:hover{ transform:translateY(-2px); box-shadow:none; }
+  }
+  .card:active{ transform:scale(0.97); }
+  .card:focus-visible{ outline:3px solid var(--sky-mid); outline-offset:3px; }
+
+  .card.locked{
+    background:var(--paper);
+    border-style:dashed;
+    color:var(--ink-soft);
+  }
+
+  .card-top{ display:flex; align-items:flex-start; justify-content:space-between; }
+  .card-num{
+    font-family:'Fraunces', serif;
+    font-size:0.78rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  .card.unlocked .card-num{ color:var(--sun-glow); font-weight:700; }
+
+  .icon{ width:20px; height:20px; flex-shrink:0; }
+  .card.unlocked .icon{ color:var(--sun-glow); }
+  .card.locked .icon{ color:var(--ink-soft); opacity:0.6; }
+
+  .card-title{
+    font-size:1.15rem;
+    line-height:1.25;
+    margin:0;
+  }
+  .card.locked .card-title{ font-style:italic; font-weight:500; color:var(--ink-soft); }
+
+  .card-date{ font-size:0.85rem; color:var(--ink-soft); margin-top:auto; }
+  .card.unlocked .card-date{ color:var(--sky-mid); font-weight:600; }
+
+  .card-status{
+    font-size:0.78rem;
+    letter-spacing:0.03em;
+  }
+
+  @media (prefers-reduced-motion:no-preference){
+    .card{ animation: riseIn 0.6s ease both; }
+  }
+  @keyframes riseIn{
+    from{ opacity:0; transform:translateY(14px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+
+  /* ---------- MODAL ---------- */
+  .overlay{
+    position:fixed; inset:0;
+    background:rgba(15,30,61,0.55);
+    backdrop-filter:blur(3px);
+    display:flex; align-items:center; justify-content:center;
+    padding:1.2rem;
+    padding-bottom:calc(1.2rem + env(safe-area-inset-bottom));
+    z-index:50;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity 0.3s ease;
+  }
+  .overlay.open{ opacity:1; pointer-events:auto; }
+
+  .postcard{
+    position:relative;
+    background:var(--paper);
+    border-radius:22px;
+    max-width:480px;
+    width:100%;
+    max-height:85vh;
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+    padding:2.4rem 2.2rem 2rem;
+    box-shadow:0 40px 70px -25px rgba(15,30,61,0.5);
+    transform:scale(0.92) translateY(10px);
+    transition:transform 0.35s ease;
+  }
+  .overlay.open .postcard{ transform:scale(1) translateY(0); }
+
+  .postcard .stamp{
+    position:absolute;
+    top:1.3rem; right:1.3rem;
+    width:46px; height:46px;
+  }
+  .postcard-eyebrow{
+    font-size:0.75rem;
+    text-transform:uppercase;
+    letter-spacing:0.16em;
+    color:var(--sun-glow);
+    font-weight:700;
+    margin-bottom:0.5rem;
+  }
+  .postcard h3{
+    font-size:1.6rem;
+    margin:0 0 0.3rem;
+    max-width:80%;
+  }
+  .postcard .postcard-date{
+    color:var(--ink-soft);
+    font-size:0.9rem;
+    margin-bottom:1.4rem;
+  }
+  .postcard .divider{
+    height:1px;
+    background:var(--line);
+    margin:0 0 1.3rem;
+  }
+  .postcard-body{
+    font-size:1rem;
+    line-height:1.7;
+    color:var(--ink);
+    white-space:pre-line;
+  }
+  .close-btn{
+    position:sticky;
+    top:1.2rem; left:1.2rem;
+    margin-bottom:0.8rem;
+    width:40px; height:40px;
+    border-radius:50%;
+    border:1px solid var(--line);
+    background:var(--sand);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    color:var(--ink-soft);
+    touch-action:manipulation;
+    flex-shrink:0;
+  }
+  .close-btn:active{ background:var(--sand-deep); transform:scale(0.94); }
+  @media (hover:hover){ .close-btn:hover{ background:var(--sand-deep); } }
+  .close-btn:focus-visible{ outline:3px solid var(--sky-mid); outline-offset:2px; }
+
+  /* ---------- LOCKED TOAST ---------- */
+  .toast{
+    position:fixed;
+    left:50%; bottom:calc(2rem + env(safe-area-inset-bottom));
+    transform:translateX(-50%) translateY(20px);
+    background:var(--ink);
+    color:var(--paper);
+    padding:0.85rem 1.3rem;
+    border-radius:999px;
+    font-size:0.9rem;
+    opacity:0;
+    transition:opacity 0.3s ease, transform 0.3s ease;
+    pointer-events:none;
+    z-index:60;
+    box-shadow:0 10px 25px rgba(0,0,0,0.25);
+    max-width:90vw;
+    text-align:center;
+  }
+  .toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
+
+  footer{
+    text-align:center;
+    padding:2.5rem 1.5rem calc(3rem + env(safe-area-inset-bottom));
+    color:var(--ink-soft);
+    font-size:0.9rem;
+  }
+  footer .heart{ color:var(--sun-glow); }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <span class="eyebrow">Un regalo para Lucía</span>
+  <h1>Ocho semanas.<br>Ocho sorpresas.</h1>
+  <p class="lede">Cada lunes se abre una puerta nueva de este verano. No se puede adelantar &mdash; hay que vivirlo semana a semana. Y para cada una, la cámara de carrete viene con nosotros: este verano lo vamos a rellenar juntos, foto a foto.</p>
+
+  <div class="arc-wrap">
+    <svg id="arcSvg" viewBox="0 0 1000 220" aria-hidden="true">
+      <defs>
+        <radialGradient id="sunGradient" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#FFE9B8"/>
+          <stop offset="60%" stop-color="var(--sun-core)"/>
+          <stop offset="100%" stop-color="var(--sun-glow)"/>
+        </radialGradient>
+      </defs>
+      <path id="arcPath" class="arc-path" d="M 30 160 C 160 40, 300 200, 430 90 C 560 -10, 640 190, 770 70 C 850 -5, 900 60, 970 30"/>
+      <g id="markers"></g>
+      <g id="sunGroup" class="sun">
+        <circle class="core" r="16"/>
+      </g>
+    </svg>
+  </div>
+  <p class="range-caption" id="rangeCaption">6 de julio &mdash; 30 de agosto de 2026</p>
+</section>
+
+<main>
+  <div class="section-head">
+    <h2>El mapa del verano</h2>
+    <p>Toca una semana desbloqueada para descubrir el plan. Y no olvides la cámara de carrete.</p>
+  </div>
+  <div class="grid" id="grid"></div>
+</main>
+
+<footer>
+  Hecho con cariño, para Lucía <span class="heart">&#9825;</span> &mdash; verano de 2026
+</footer>
+
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="postcard">
+    <button class="close-btn" id="closeBtn" aria-label="Cerrar">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></svg>
+    </button>
+    <svg class="stamp" viewBox="0 0 46 46" aria-hidden="true">
+      <circle cx="23" cy="23" r="20" fill="#FFF" stroke="var(--sand-deep)" stroke-width="2" stroke-dasharray="3 3"/>
+      <circle cx="23" cy="23" r="10" fill="url(#sunGradient)"/>
+    </svg>
+    <div class="postcard-eyebrow" id="modalEyebrow">Semana 1</div>
+    <h3 id="modalTitle">Título</h3>
+    <div class="postcard-date" id="modalDate">Fecha</div>
+    <div class="divider"></div>
+    <div class="postcard-body" id="modalBody">Contenido</div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* =========================================================
+   EDITA AQUÍ el contenido de cada semana.
+   - date: lunes de desbloqueo, formato YYYY-MM-DD
+   - title: título corto que se ve solo cuando está desbloqueada
+   - content: el plan real. Sustituye el texto de ejemplo.
+   ========================================================= */
+const weeks = [
+  {
+    n: 1,
+    date: '2026-07-06',
+    title: 'Se enciende la mecha',
+    content: '✏️ Escribe aquí el plan de la Semana 1.\n\nPuede ser una cita, una pista, o simplemente unas palabras tuyas para empezar el verano.\n\n📷 Y no te olvides la cámara de carrete: esta es la primera foto del verano que vamos a rellenar juntos.'
+  },
+  {
+    n: 2,
+    date: '2026-07-13',
+    title: 'Primeras olas',
+    content: '✏️ Escribe aquí el plan de la Semana 2.\n\n📷 Un carrete menos por revelar.'
+  },
+  {
+    n: 3,
+    date: '2026-07-20',
+    title: 'Sol en lo alto',
+    content: '✏️ Escribe aquí el plan de la Semana 3.\n\n📷 Un carrete menos por revelar.'
+  },
+  {
+    n: 4,
+    date: '2026-07-27',
+    title: 'Ecuador del verano',
+    content: '✏️ Escribe aquí el plan de la Semana 4. Mitad de camino: puede ser un buen momento para algo especial.\n\n📷 Un carrete menos por revelar.'
+  },
+  {
+    n: 5,
+    date: '2026-08-03',
+    title: 'Corriente de aventura',
+    content: '✏️ Escribe aquí el plan de la Semana 5.\n\n📷 Un carrete menos por revelar.'
+  },
+  {
+    n: 6,
+    date: '2026-08-10',
+    title: 'Atardeceres dorados',
+    content: '✏️ Escribe aquí el plan de la Semana 6.\n\n📷 Un carrete menos por revelar.'
+  },
+  {
+    n: 7,
+    date: '2026-08-17',
+    title: 'La cuenta atrás',
+    content: '✏️ Escribe aquí el plan de la Semana 7.\n\n📷 Un carrete menos por revelar.'
+  },
+  {
+    n: 8,
+    date: '2026-08-24',
+    title: 'El cierre perfecto',
+    content: '✏️ Escribe aquí el plan de la Semana 8. El gran final del verano — hazlo memorable.\n\n📷 El último carrete del verano. Cuando lo reveléis, ahí estará todo.'
+  }
+];
+
+/* Trucos para probar antes de regalarla:
+   1) Añade ?preview=1 al final de la URL en tu navegador para
+      desbloquear todas las semanas temporalmente (solo en tu pantalla).
+   2) O cambia una fecha de arriba a un día pasado para ver esa tarjeta abierta,
+      y no olvides devolverla a su fecha real luego. */
+
+const params = new URLSearchParams(window.location.search);
+const previewAll = params.get('preview') === '1';
+
+function startOfDay(d){ const x = new Date(d); x.setHours(0,0,0,0); return x; }
+const today = startOfDay(new Date());
+
+function fmtDate(iso){
+  const d = new Date(iso + 'T00:00:00');
+  return d.toLocaleDateString('es-ES', { weekday:'long', day:'numeric', month:'long' });
+}
+function fmtDateShort(iso){
+  const d = new Date(iso + 'T00:00:00');
+  return d.toLocaleDateString('es-ES', { day:'numeric', month:'short' });
+}
+
+function isUnlocked(iso){
+  if (previewAll) return true;
+  return today >= startOfDay(new Date(iso + 'T00:00:00'));
+}
+
+/* ---------- render grid ---------- */
+const grid = document.getElementById('grid');
+const lockIcon = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>';
+const openIcon = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/></svg>';
+
+weeks.forEach((w, i) => {
+  const unlocked = isUnlocked(w.date);
+  const card = document.createElement('button');
+  card.className = 'card ' + (unlocked ? 'unlocked' : 'locked');
+  card.style.animationDelay = (i * 0.06) + 's';
+  card.innerHTML = `
+    <div class="card-top">
+      <span class="card-num">Semana ${w.n}</span>
+      ${unlocked ? openIcon : lockIcon}
+    </div>
+    <p class="card-title">${unlocked ? w.title : '¿ Qué habrá aquí ?'}</p>
+    <div>
+      <div class="card-date">${fmtDateShort(w.date)}</div>
+      <div class="card-status">${unlocked ? 'Toca para abrir' : daysUntil(w.date)}</div>
+    </div>
+  `;
+  card.addEventListener('click', () => {
+    if (unlocked){ openModal(w); }
+    else { showToast(`Se desbloquea el ${fmtDate(w.date)} 🔒`); }
+  });
+  grid.appendChild(card);
+});
+
+function daysUntil(iso){
+  const target = startOfDay(new Date(iso + 'T00:00:00'));
+  const diff = Math.round((target - today) / 86400000);
+  if (diff <= 0) return 'Se desbloquea hoy';
+  if (diff === 1) return 'Se desbloquea mañana';
+  return `Faltan ${diff} días`;
+}
+
+/* ---------- modal ---------- */
+const overlay = document.getElementById('overlay');
+function openModal(w){
+  document.getElementById('modalEyebrow').textContent = `Semana ${w.n}`;
+  document.getElementById('modalTitle').textContent = w.title;
+  document.getElementById('modalDate').textContent = fmtDate(w.date).replace(/^\w/, c => c.toUpperCase());
+  document.getElementById('modalBody').textContent = w.content;
+  overlay.classList.add('open');
+  document.getElementById('closeBtn').focus();
+}
+function closeModal(){ overlay.classList.remove('open'); }
+document.getElementById('closeBtn').addEventListener('click', closeModal);
+overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+/* ---------- toast ---------- */
+let toastTimer;
+function showToast(msg){
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 2600);
+}
+
+/* ---------- sun arc timeline ---------- */
+const svg = document.getElementById('arcSvg');
+const path = document.getElementById('arcPath');
+const markersG = document.getElementById('markers');
+const sunGroup = document.getElementById('sunGroup');
+
+const rangeStart = startOfDay(new Date(weeks[0].date + 'T00:00:00'));
+const lastWeekStart = startOfDay(new Date(weeks[weeks.length-1].date + 'T00:00:00'));
+const rangeEnd = new Date(lastWeekStart.getTime() + 7 * 86400000); // end of last week
+
+function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
+
+function layoutArc(){
+  const totalLength = path.getTotalLength();
+
+  // place week markers along the path at their real date fraction
+  markersG.innerHTML = '';
+  weeks.forEach(w => {
+    const wDate = startOfDay(new Date(w.date + 'T00:00:00'));
+    const frac = clamp((wDate - rangeStart) / (rangeEnd - rangeStart), 0, 1);
+    const pt = path.getPointAtLength(frac * totalLength);
+    const passed = isUnlocked(w.date);
+    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    g.setAttribute('class', 'arc-marker' + (passed ? ' passed' : ''));
+    g.innerHTML = `<circle cx="${pt.x}" cy="${pt.y}" r="5"></circle>
+                   <text x="${pt.x}" y="${pt.y - 14}" text-anchor="middle">${w.n}</text>`;
+    markersG.appendChild(g);
+  });
+
+  // place the sun at today's fraction
+  const todayFrac = clamp((today - rangeStart) / (rangeEnd - rangeStart), 0, 1);
+  const sunPt = path.getPointAtLength(todayFrac * totalLength);
+  sunGroup.setAttribute('transform', `translate(${sunPt.x}, ${sunPt.y})`);
+}
+
+// getTotalLength needs the SVG to be laid out; run after a tick
+window.addEventListener('load', layoutArc);
+setTimeout(layoutArc, 50);
+window.addEventListener('resize', layoutArc);
+</script>
+</body>
+</html>
