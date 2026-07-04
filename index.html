@@ -407,50 +407,50 @@ const weeks = [
   {
     n: 1,
     date: '2026-07-06',
-    title: 'Se enciende la mecha',
-    content: '✏️ Escribe aquí el plan de la Semana 1.\n\nPuede ser una cita, una pista, o simplemente unas palabras tuyas para empezar el verano.\n\n📷 Y no te olvides la cámara de carrete: esta es la primera foto del verano que vamos a rellenar juntos.'
+    title: 'A Coviña',
+    content: 'Quiero que empecemos este verano donde volvimos a empezar nosotros. Así que esta semana nos vamos a A Coviña.\n\nLleva la cámara de carrete, porque esta va a ser la primera foto de todo el verano que nos queda por delante.'
   },
   {
     n: 2,
     date: '2026-07-13',
-    title: 'Primeras olas',
-    content: '✏️ Escribe aquí el plan de la Semana 2.\n\n📷 Un carrete menos por revelar.'
+    title: 'Marisco en O Grove',
+    content: 'Esta semana nos vamos a O Grove a pasar un día de playa y a comer el marisco que tanto te gusta.\n\nUn carrete menos por revelar, y con él, un buen recuerdo más.'
   },
   {
     n: 3,
     date: '2026-07-20',
-    title: 'Sol en lo alto',
-    content: '✏️ Escribe aquí el plan de la Semana 3.\n\n📷 Un carrete menos por revelar.'
+    title: 'Piscinas de Mougás',
+    content: 'Toca refrescarnos. Nos vamos a las piscinas naturales de Mougás a pasar la semana entre agua y rocas.\n\nUn carrete menos por revelar.'
   },
   {
     n: 4,
     date: '2026-07-27',
-    title: 'Ecuador del verano',
-    content: '✏️ Escribe aquí el plan de la Semana 4. Mitad de camino: puede ser un buen momento para algo especial.\n\n📷 Un carrete menos por revelar.'
+    title: 'Atardecer en Bueu',
+    content: 'Esta semana quiero llevarte al puerto de Bueu a ver caer la tarde y hacernos unas fotos con calma, sin prisa.\n\nUn carrete menos por revelar.'
   },
   {
     n: 5,
     date: '2026-08-03',
-    title: 'Corriente de aventura',
-    content: '✏️ Escribe aquí el plan de la Semana 5.\n\n📷 Un carrete menos por revelar.'
+    title: 'Terrazas en Sanxenxo',
+    content: 'Playa por la mañana y terrazas por la tarde en Sanxenxo. Una semana tranquila, para disfrutarnos sin más plan que estar juntos.\n\nUn carrete menos por revelar.'
   },
   {
     n: 6,
     date: '2026-08-10',
-    title: 'Atardeceres dorados',
-    content: '✏️ Escribe aquí el plan de la Semana 6.\n\n📷 Un carrete menos por revelar.'
+    title: 'Caminata costera',
+    content: 'Esta semana nos vamos a caminar por la costa, a desconectar de todo un rato y a hablar de lo que queramos por el camino.\n\nUn carrete menos por revelar.'
   },
   {
     n: 7,
     date: '2026-08-17',
-    title: 'La cuenta atrás',
-    content: '✏️ Escribe aquí el plan de la Semana 7.\n\n📷 Un carrete menos por revelar.'
+    title: 'Picnic en Cabo Home',
+    content: 'Te preparo un picnic y nos vamos a Cabo Home a ver el atardecer. De los planes que más ganas tengo de que lleguen.\n\nUn carrete menos por revelar.'
   },
   {
     n: 8,
     date: '2026-08-24',
-    title: 'El cierre perfecto',
-    content: '✏️ Escribe aquí el plan de la Semana 8. El gran final del verano — hazlo memorable.\n\n📷 El último carrete del verano. Cuando lo reveléis, ahí estará todo.'
+    title: 'Cala cerca de Marín',
+    content: 'Cerramos el verano con calma, en una cala cerca de Marín, dándonos un último baño juntos antes de que esto se acabe.\n\nEste es el último carrete del verano. Cuando lo revelemos, ahí va a estar todo.'
   }
 ];
 
@@ -502,7 +502,8 @@ weeks.forEach((w, i) => {
     </div>
   `;
   card.addEventListener('click', () => {
-    if (unlocked){ openModal(w); }
+    if (unlocked && w.link){ window.location.href = w.link; }
+    else if (unlocked){ openModal(w); }
     else { showToast(`Se desbloquea el ${fmtDate(w.date)} 🔒`); }
   });
   grid.appendChild(card);
